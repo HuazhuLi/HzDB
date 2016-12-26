@@ -1,29 +1,20 @@
-#ifndef HzDB.h
-#define HzDB.h                                                                                                        
+#ifndef _HZ_DB_H
+#define _HZ_DB_H 
 
-typedef void * DBHANDLE;
+typedef struct 
+{
+	char	NAME_OF_DB[32]
+	char	
+	BTREE	*btree
+	TABLE	*table
+}DB;
 
-DBHANDLE db_open(const char *, int, ...);
-void	db_close(DBHANDLE);
-char	*db_fetch(DBHANDLE, const char);
-int		db_store(DBHANDLE, const char *, const char *, int);
-int		db_delete(DBHANDLE, const char *)；
-void	db_rewind(DBHANDLE);
-char	*db_nextrec(DBHANDLE, char *);
+typedef int STATUS;
 
-/*
-*Some details for db_store
-*/
-#define DB_INSERT 1
-#define DB_REPLACE 2
-#define	DB_STORE 3
-
- /*
- *Details of limit
- */
-#define IDXLEN_MIN	6
-#define IDXLEN_MAX	1024
-#define DATLEN_MIN	2
-#define DATLEN_MAX	1024
-
-#endif	/*HzDB.h*/
+DB 		*openDB(const char *);
+STATUS	closeDB(DB 	*db)
+STATUS  getDB
+STATUS	storeDB
+STATUS	deleteDB
+	
+#endif
